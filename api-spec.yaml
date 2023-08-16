@@ -1,0 +1,61 @@
+openapi: 3.1.0
+info:
+  title: My API
+  version: 1.0.0
+paths:
+  "/jobs/{jobId}":
+    put:
+      parameters:
+        - in: path
+          name: jobId
+          schema:
+            type: string
+            description: Job ID
+            example: "12345"
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Job title
+                  example: My job
+              required:
+                - title
+      responses:
+        "200":
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobId:
+                    type: string
+                    description: Job ID
+                    example: "12345"
+                  title:
+                    type: string
+                    description: Job title
+                    example: My job
+                required:
+                  - jobId
+                  - title
+  greeting:
+    get:
+      responses:
+        "200":
+          description: Example for hello world route
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Hello, World
+                required:
+                  - message
